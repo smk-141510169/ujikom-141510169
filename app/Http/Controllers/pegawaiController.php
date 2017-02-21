@@ -20,15 +20,17 @@ class pegawaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+        
+    }
     
     public function index()
     {
       
-            $pegawai=pegawai::paginate(5);
-        
-
-        
+        $pegawai=pegawai::paginate(5);
+     
         return view('pegawai.index',compact('pegawai'));
     }
 
@@ -39,7 +41,10 @@ class pegawaiController extends Controller
      */
     public function create()
     {
-        return view('pegawai.creater');
+        $pegawai=pegawai::all();
+        $jabatan=jabatan::all();
+        $golongan=golongan::all();
+        return view('pegawai.creater', compact('pegawai','jabatan','golongan'));
     }
 
     /**
@@ -96,7 +101,10 @@ class pegawaiController extends Controller
      */
     public function show($id)
     {
-        //
+        $jabatan=jabatan::all();
+        $golongan=golongan::all();
+        $pegawai=pegawai::find($id);
+        return view('pegawai.show',compact('pegawai','jabatan','golongan'));
     }
 
     /**
@@ -107,7 +115,10 @@ class pegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jabatan=jabatan::all();
+        $golongan=golongan::all();
+        $pegawai=pegawai::find($id);
+        return view('pegawai.edit',compact('pegawai','jabatan','golongan'));
     }
 
     /**
@@ -119,7 +130,7 @@ class pegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

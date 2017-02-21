@@ -107,10 +107,15 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('jabatan_id') ? ' has-error' : '' }}">
-                            <label for="jabatan_id" class="col-md-4 control-label">ID Jabatan</label>
+                            <label for="jabatan_id" class="col-md-4 control-label">Kode Jabatan</label>
 
                             <div class="col-md-6">
-                                <input id="jabatan_id" type="text" class="form-control" name="jabatan_id" value="{{ old('jabatan_id') }}" required>
+                                <select class="form-control" name="jabatan_id">
+                                    <option></option>
+                                    @foreach($jabatan as $data)
+                                    <option value="{!!$data->id!!}">{!!$data->nama_jabatan!!}</option>
+                                @endforeach
+                            </select>
 
                                 @if ($errors->has('jabatan_id'))
                                     <span class="help-block">
@@ -121,10 +126,15 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('golongan_id') ? ' has-error' : '' }}">
-                            <label for="golongan_id" class="col-md-4 control-label">ID Golongan</label>
+                            <label for="golongan_id" class="col-md-4 control-label">Kode Golongan</label>
 
                             <div class="col-md-6">
-                                <input id="golongan_id" type="text" class="form-control" name="golongan_id" required>
+                                <select class="form-control" name="golongan_id">
+                                    <option></option>
+                                    @foreach($golongan as $data)
+                                    <option value="{!!$data->id!!}">{!!$data->nama_golongan!!}</option>
+                            @endforeach
+                            </select>
 
                                 @if ($errors->has('golongan_id'))
                                     <span class="help-block">

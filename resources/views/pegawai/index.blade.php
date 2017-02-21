@@ -66,9 +66,9 @@
                                         <td><center><a title="Melihat Detail Data" href="{{url('pegawai',$data->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"> Detail</a></i>
                                         <a title="Mengedit Data " href="{{route('pegawai.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
                                         
-                                        <a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>
+                                        <!--<a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>
 
-                                        @include('hapus.delete',['url'=>route('pegawai.destroy',$data->id),'model'=>$data])
+                                        @include('hapus.delete',['url'=>route('pegawai.destroy',$data->id),'model'=>$data])-->
 
                                         </center>
                                         </td>
@@ -76,6 +76,7 @@
                                    </tbody>
                                 @endforeach
                             </table>
+                            <h4>**Untuk mengghapus data penggawai lewat tabel user</h4>
                              {{$pegawai->links()}}
                         </div>
                     </div>

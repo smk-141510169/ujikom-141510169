@@ -8,7 +8,7 @@ class kategori_lembur extends Model
 {
     //
     protected $table = 'kategori_lemburs';
-    protected $fillable = ['kode_lembur','jabatan_id','golongan_id','besaran_uang'];
+    
 
  
 

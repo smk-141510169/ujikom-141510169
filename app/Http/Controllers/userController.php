@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
+use App\User;
 
 class userController extends Controller
 {
@@ -11,9 +12,17 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin');
+        
+    }
+    
     public function index()
     {
-        //
+        $user=User::paginate(5);
+        
+        return view('user.index',compact('user'));
     }
 
     /**
@@ -81,6 +90,7 @@ class userController extends Controller
     {
         //
         User::find($id)->delete();
+        return redirect('user');
         
     }
 }

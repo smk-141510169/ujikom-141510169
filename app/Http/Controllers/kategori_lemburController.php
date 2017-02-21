@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use Request;
+use App\jabatan;
+use App\golongan;
+use App\kategori_lembur;
 class kategori_lemburController extends Controller
 {
     /**
@@ -19,7 +21,9 @@ class kategori_lemburController extends Controller
     
     public function index()
     {
-        //
+        $kategorilembur=kategori_lembur::paginate(8);
+     
+        return view('kategorilembur.index',compact('kategorilembur'));
     }
 
     /**
@@ -29,7 +33,10 @@ class kategori_lemburController extends Controller
      */
     public function create()
     {
-        //
+        $kategorilembur=kategori_lembur::all();
+        $jabatan=jabatan::all();
+        $golongan=golongan::all();
+        return view('kategorilembur.create', compact('kategorilembur','jabatan','golongan'));
     }
 
     /**
@@ -40,7 +47,16 @@ class kategori_lemburController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $kategorilembur = new kategori_lembur;
+         $kategorilembur->kode_lembur=Request::get('kode_lembur');
+         $kategorilembur->jabatan_id=Request::get('jabatan_id');
+         $kategorilembur->golongan_id=Request::get('golongan_id');
+         $kategorilembur->besaran_uang=Request::get('besaran_uang');
+         
+         $kategorilembur->save(); 
+
+         return redirect('kategorilembur');
+
     }
 
     /**
@@ -51,7 +67,10 @@ class kategori_lemburController extends Controller
      */
     public function show($id)
     {
-        //
+        $jabatan=jabatan::all();
+        $golongan=golongan::all();
+        $kategorilembur=kategori_lembur::find($id);
+        return view('kategorilembur.show',compact('kategorilembur','golongan','jabatan'));
     }
 
     /**
@@ -62,7 +81,10 @@ class kategori_lemburController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jabatan=jabatan::all();
+        $golongan=golongan::all();
+        $kategorilembur=kategori_lembur::find($id);
+        return view('kategorilembur.edit',compact('kategorilembur','golongan','jabatan'));
     }
 
     /**
@@ -74,7 +96,10 @@ class kategori_lemburController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kategorilembur=kategori_lembur::find($id);
+        $kategoriUpdate=Request::all();
+        $kategorilembur->update($kategoriUpdate);
+        return redirect('kategorilembur');
     }
 
     /**
@@ -85,6 +110,7 @@ class kategori_lemburController extends Controller
      */
     public function destroy($id)
     {
-        //
+        kategori_lembur::find($id)->delete();
+        return redirect('kategorilembur');
     }
 }
