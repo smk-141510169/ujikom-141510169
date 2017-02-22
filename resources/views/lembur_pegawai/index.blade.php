@@ -24,15 +24,18 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <!--<div class="form-group input-group">
-                            <form action="matadiklat/?nama_mata_diklat=nama_mata_diklat">
-                                <input type="text" name="nama_mata_diklat" placeholder="search">
-                                <input type="submit" class="btn btn-success" value="search">
-                                <a href="{{'/matadiklat'}}" class="btn btn-danger"><i> Reset</a></i>
+                         <div class="table-responsive">
+                         <div class="form-group input-group">
+                            <form action="lembur_pegawai/?created_at=created_at">
+                                <div class="form-group input-group">
+                                <input type="text" class="form-control" name="created_at">
+                                <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+                                </div>
+                                <h6>**Search diambil bedasarkan tanggal buat</h6>
                             </form>
-                        </div>-->
+                        </div>
                         <hr>
-                        <div class="table-responsive">
+                       
                         <a href="{{url('lembur_pegawai/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
 
                          <hr>   
@@ -45,6 +48,7 @@
                                         <th><center>NIP Pegawai</center></th>
                                         <th><center>Nama Pegawai</center></th>
                                         <th><center>Jumlah Jam</center></th>
+                                        <th><center>Tanggal Buat</center></th>
                                         <th><center>Aksi</center></th>
                                     </tr>
                                 </thead>
@@ -59,6 +63,7 @@
                                         <td><center>{{$data->pegawai->nip}}</center></td>
                                         <td><center>{{$data->pegawai->User->name}}</center></td>
                                         <td><center>{{$data->jumlah_jam}}</center></td>
+                                        <td><center>{{$data->created_at}}</center></td>
                                         <td><center>
 
                                         <a title="Mengubah Data" href="{{route('lembur_pegawai.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>

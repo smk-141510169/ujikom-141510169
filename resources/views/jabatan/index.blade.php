@@ -24,6 +24,7 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
+                         <div class="table-responsive">
                         <div class="form-group input-group">
                             <form action="jabatan/?nama_jabatan=nama_jabatan">
                                 <div class="form-group input-group">
@@ -35,7 +36,6 @@
                         </div>
 
                         <hr>
-                        <div class="table-responsive">
                         <a href="{{url('jabatan/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
 
                          <hr>   

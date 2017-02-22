@@ -24,9 +24,17 @@ class lembur_pegawaiController extends Controller
     
     public function index()
     {
+        if (request()->has('created_at')) {
+            $lembur_pegawai=lembur_pegawai::where('created_at',request('created_at'))->paginate(5);
+            
+        }
+        else{
         $lembur_pegawai=lembur_pegawai::with('kategori_lembur');
         $lembur_pegawai=lembur_pegawai::with('pegawai');
         $lembur_pegawai=lembur_pegawai::paginate(5);
+        }
+
+        
         return view('lembur_pegawai.index',compact('lembur_pegawai','kategori_lembur','pegawai'));
     }
 
@@ -51,8 +59,35 @@ class lembur_pegawaiController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = ['kode_lembur_id'=>'required',
+                  'pegawai_id' => 'required',
+                  'jumlah_jam' => 'required|numeric|min:1'];
+        $sms = ['kode_lembur_id.required'=>'Harus Diisi',
+                'pegawai_id.required' => 'Harus Diisi',
+                'jumlah_jam.required' => 'Harus Diisi',
+                'jumlah_jam.numeric' => 'Harus Angka',
+                'jumlah_jam.min' => 'Angka harus minimal 1'];
+        $valid=Validator::make(Input::all(),$rules,$sms);
+        if ($valid->fails()) {
 
-        
+          
+            return redirect('lembur_pegawai/create')
+            ->withErrors($valid)
+            ->withInput();
+        }
+        else
+        {
+       
+       /* $pegawai = pegawai::where('id',$lembur_pegawai['pegawai_id'])->first();
+        $check = kategori_lembur::where('jabatan_id',$pegawai->jabatan_id)->where('golongan_id',$pegawai->golongan_id)->first();
+        if(!isset($check)){
+            $pegawai = pegawai::with('User')->get();
+            $missing_count = true;
+            // dd($error_klnf);
+            return view('lembur_pegawai.create',compact('kategori_lembur','pegawai','missing_count'));
+        }
+        $lembur_pegawai['kode_lembur_id'] = $check->id;
+        */
          $lembur_pegawai = new lembur_pegawai;
          $lembur_pegawai->kode_lembur_id=Request::get('kode_lembur_id');
          $lembur_pegawai->pegawai_id=Request::get('pegawai_id');
@@ -61,6 +96,9 @@ class lembur_pegawaiController extends Controller
          $lembur_pegawai->save(); 
 
          return redirect('lembur_pegawai');
+        }
+        
+         
     }
 
     /**

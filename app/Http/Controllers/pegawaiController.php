@@ -28,9 +28,14 @@ class pegawaiController extends Controller
     
     public function index()
     {
+        if (request()->has('nip')) {
+            $pegawai=pegawai::where('nip',request('nip'))->paginate(5);
+            
+        }
+        else{
+            $pegawai=pegawai::paginate(5);
+        }
       
-        $pegawai=pegawai::paginate(5);
-     
         return view('pegawai.index',compact('pegawai'));
     }
 

@@ -72,8 +72,72 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endif
-                    </ul>
+                           </ul> 
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                     
+                    @if(Auth::user()->permision == 'admin')
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> MENU <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="{{ url('/home') }}"><i class="fa fa-fw fa-home"></i> Home</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/jabatan') }}"><i class="fa fa-fw fa-edit"></i> Jabatan</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/golongan') }}"><i class="fa fa-fw fa-edit"></i> Golongan</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/kategori_lembur') }}"><i class="fa fa-fw fa-edit"></i> Kategori Lembur</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/pegawai') }}"><i class="fa fa-fw fa-edit"></i> Pegawai</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/lembur_pegawai') }}"><i class="fa fa-fw fa-edit"></i> Lembur Pegawai</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/tunjangan') }}"><i class="fa fa-fw fa-edit"></i> tunjangan</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/Penggajian') }}"><i class="fa fa-fw fa-edit"></i> Penggajian</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/user') }}"><i class="fa fa-fw fa-edit"></i> User</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                    @else
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> MENU <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="{{ url('/home') }}"><i class="fa fa-fw fa-home"></i> Home</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/pegawai') }}"><i class="fa fa-fw fa-edit"></i> Pegawai</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/penggajian') }}"><i class="fa fa-fw fa-edit"></i> Penggajian</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                   
+                  @endif  
+
+                    </li>
+                </ul>
+                @endif
+                
+                  
+                    
                 </div>
             </div>
         </nav>

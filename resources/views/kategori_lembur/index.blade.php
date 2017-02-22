@@ -24,11 +24,11 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <form action="jabatan/?kode_lembur=kode_lembur">
+                        <form action="kategori_lembur/?kode_lembur=kode_lembur">
                                 <div class="form-group input-group">
-                                <input type="text" class="form-control" name="kode_lembur">
-                                <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+                                <input type="text" class="form-control" name="kode_lembur"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
+                             
                                 <h6>**Search diambil bedasarkan kode lembur</h6>
                             </form>
                         <hr>

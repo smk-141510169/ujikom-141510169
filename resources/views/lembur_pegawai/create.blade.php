@@ -45,7 +45,7 @@
                     <div class="form-group{{ $errors->has('jumlah_jam') ? ' has-error' : '' }}">
                             <label for="jumlah_jam" class="col-md-4 control-label">Jumlah Jam </label>
                                 <div class="col-md-6">
-                                    <input type="text" name="jumlah_jam" placeholder="Jumlah Jam" class="form-control">
+                                    <input type="number" name="jumlah_jam" placeholder="Jumlah Jam" class="form-control">
                                     @if ($errors->has('jumlah_jam'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('jumlah_jam') }}</strong>
