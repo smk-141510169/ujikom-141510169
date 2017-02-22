@@ -13,13 +13,13 @@
                                 <i class="fa fa-home"></i> Menu
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Kategori Lembur
+                                <i class="fa fa-edit"></i> Lembur Pegawai
                             </li>
                         </ol>
                     </div>
                 </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Data Kategori Lembur</div></h2>
+                <div class="panel-heading"><h2>Data Lembur Pegawai</div></h2>
 
                 <div class="panel-body">
                      <div class="col-lg-12">
@@ -33,7 +33,7 @@
                         </div>-->
                         <hr>
                         <div class="table-responsive">
-                        <a href="{{url('kategorilembur/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
+                        <a href="{{url('lembur_pegawai/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
 
                          <hr>   
                             <table class="table table-bordered table-hover">
@@ -41,31 +41,31 @@
                                 <thead>
                                     <tr>
                                         <th><center>No</center></th>
-                                        <th><center>Kode Lembur</center></th>
-                                        <th><center>Nama Jabatan</center></th>
-                                        <th><center>Nama Golongan</center></th>
-                                        <th><center>Besaran Uang</center></th>
+                                        <th><center>Kode Kategori Lembur</center></th>
+                                        <th><center>NIP Pegawai</center></th>
+                                        <th><center>Nama Pegawai</center></th>
+                                        <th><center>Jumlah Jam</center></th>
                                         <th><center>Aksi</center></th>
                                     </tr>
                                 </thead>
                                 @php
                                 $no=1;
                                 @endphp
-                                @foreach($kategorilembur as $data)
+                                @foreach($lembur_pegawai as $data)
                                 <tbody>
                                     <tr>
                                         <td><center>{{$no++}}</center></td>
-                                        <td><center>{{$data->kode_lembur}}</center></td>
-                                        <td><center>{{$data->jabatan->nama_jabatan}}</center></td>
-                                        <td><center>{{$data->golongan->nama_golongan}}</center></td>
-                                        <td><center>Rp.{{$data->besaran_uang}}</center></td>
-                                        <td><center><a title="Melihat detail data" href="{{url('kategorilembur',$data->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"> Detail</a></i>
+                                        <td><center>{{$data->kategori_lembur->kode_lembur}}</center></td>
+                                        <td><center>{{$data->pegawai->nip}}</center></td>
+                                        <td><center>{{$data->pegawai->User->name}}</center></td>
+                                        <td><center>{{$data->jumlah_jam}}</center></td>
+                                        <td><center>
 
-                                        <a title="Mengubah Data" href="{{route('kategorilembur.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
+                                        <a title="Mengubah Data" href="{{route('lembur_pegawai.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
 
                                         <a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>
 
-                                        @include('hapus.delete',['url'=>route('kategorilembur.destroy',$data->id),'model'=>$data])
+                                        @include('hapus.delete',['url'=>route('lembur_pegawai.destroy',$data->id),'model'=>$data])
                                         </center>
                                         </td>
                                     </tr>
@@ -75,7 +75,7 @@
 
                                 @endforeach
                             </table>
-                          {{$kategorilembur->links()}}
+                          {{$lembur_pegawai->links()}}
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,8 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    Anda Tidak Berhak Mengakses Halaman Kategori Lembur
+                    Anda Tidak Berhak Mengakses Halaman Lembur 
+                    Pegawai
                 </div>
             </div>
         </div>

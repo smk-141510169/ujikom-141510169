@@ -98,7 +98,7 @@
                                 <a href="{{ url('/golongan') }}"><i class="fa fa-fw fa-edit"></i> Golongan</a>
                             </li>
                             <li>
-                                <a href="{{ url('/kategorilembur') }}"><i class="fa fa-fw fa-edit"></i> Kategori Lembur</a>
+                                <a href="{{ url('/kategori_lembur') }}"><i class="fa fa-fw fa-edit"></i> Kategori Lembur</a>
                             </li>
                             <li>
                                 <a href="{{ url('/pegawai') }}"><i class="fa fa-fw fa-edit"></i> Pegawai</a>

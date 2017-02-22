@@ -90,7 +90,7 @@ class pegawaiController extends Controller
          $pegawai->user_id= $user->id;
          $pegawai->save(); 
 
-         return redirect('/pegawai');
+         return redirect('pegawai');
     }
 
     /**
@@ -101,10 +101,7 @@ class pegawaiController extends Controller
      */
     public function show($id)
     {
-        $jabatan=jabatan::all();
-        $golongan=golongan::all();
-        $pegawai=pegawai::find($id);
-        return view('pegawai.show',compact('pegawai','jabatan','golongan'));
+        
     }
 
     /**
@@ -130,7 +127,40 @@ class pegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $this->validate($request,[
+                'name'=>'required',
+                'nip'=>'required|numeric|min:3|unique:pegawais',
+                'permision'=>'required|max:255',
+                'email'=>'required|email|max:255|unique:users',
+                'password'=>'required|min:6|confirmed',
+            ]);
+
+        $user = User::update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'permision' => $request->get('permision'),
+            'password' => bcrypt($request->get('password')),
+        ]);
+
+        $file=Input::file('photo');
+        $dis=public_path().'/image';
+        $filen=str_random(6).'_'.$file->getClientOriginalName();
+        $upload=$file->move($dis,$filen);
+        if(Input::hasfile('photo')){
+            $pegawai=pegawai::find($id);
+            $pegawai->nip=Input::get('nip');
+            $pegawai->jabatan_id=Input::get('jabatan_id');
+            $pegawai->golongan_id=Input::get('golongan_id');
+
+        }
+        $pegawai->photo=$filen;
         
+   
+        
+         $pegawai->user_id= $user->id;
+         $pegawai->update(); 
+
+         return redirect('pegawai');
     }
 
     /**
@@ -141,8 +171,6 @@ class pegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
-        
         pegawai::find($id)->delete();
         return redirect('pegawai');
     }

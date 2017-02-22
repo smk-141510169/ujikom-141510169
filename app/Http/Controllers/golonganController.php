@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Request;
 use App\golongan;
+use Validator;
+use Input;
 
 class golonganController extends Controller
 {
@@ -19,9 +21,14 @@ class golonganController extends Controller
     }
     
     public function index()
-    {
-        $golongan=golongan::paginate(5);
-        
+    {   
+        if (request()->has('nama_golongan')) {
+            $golongan=golongan::where('nama_golongan',request('nama_golongan'))->paginate(5);
+            
+        }
+        else{
+            $golongan=golongan::paginate(5);
+        }
         return view('golongan.index',compact('golongan'));
     }
 
@@ -43,8 +50,25 @@ class golonganController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $rules=['kode_golongan'=>'required|unique:golongans',
+                'nama_golongan'=>'required',
+                'besaran_uang'=>'required|numeric'];
+        $sms=['kode_golongan.required'=>'Harus Di Isi',
+                'kode_golongan.unique'=>'Tidak Boleh Sama',
+                'nama_golongan.required'=>'Harus Di Isi',
+                'besaran_uang.required'=>'Harus Diisi',
+                'besaran_uang.numeric'=>'Harus Angka'];
+        $valid=Validator::make(Input::all(),$rules,$sms);
+        if ($valid->fails()) {
 
+              
+            return redirect('golongan/create')
+            ->withErrors($valid)
+            ->withInput();
+        }
+        else
+        {
+        
          $golongan = new golongan;
          $golongan->kode_golongan=Request::get('kode_golongan');
          $golongan->nama_golongan=Request::get('nama_golongan');
@@ -52,7 +76,8 @@ class golonganController extends Controller
          
          $golongan->save(); 
 
-         return redirect('/golongan');
+         return redirect('golongan');
+        }
     }
 
     /**
@@ -63,8 +88,7 @@ class golonganController extends Controller
      */
     public function show($id)
     {
-        $golongan=golongan::find($id);
-        return view('golongan.show',compact('golongan'));
+        
     }
 
     /**
@@ -88,10 +112,34 @@ class golonganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $golongan=golongan::find($id);
-        $golonganUpdate=Request::all();
-        $golongan->update($golonganUpdate);
-        return redirect('golongan');
+        $rules=['kode_golongan'=>'required|unique:golongans',
+                'nama_golongan'=>'required',
+                'besaran_uang'=>'required|numeric'];
+        $sms=['kode_golongan.required'=>'Harus Di Isi',
+                'kode_golongan.unique'=>'Tidak Boleh Sama',
+                'nama_golongan.required'=>'Harus Di Isi',
+                'besaran_uang.required'=>'Harus Diisi',
+                'besaran_uang.numeric'=>'Harus Angka'];
+        $valid=Validator::make(Input::all(),$rules,$sms);
+        if ($valid->fails()) {
+
+              
+            return redirect('golongan/'.$id.'/edit')
+            ->withErrors($valid)
+            ->withInput();
+        }
+        else
+        {
+        
+         $golongan =golongan::find($id);
+         $golongan->kode_golongan=Request::get('kode_golongan');
+         $golongan->nama_golongan=Request::get('nama_golongan');
+         $golongan->besaran_uang=Request::get('besaran_uang');
+         
+         $golongan->update(); 
+
+         return redirect('golongan');
+        }
     }
 
     /**

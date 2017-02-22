@@ -13,29 +13,27 @@
                                 <i class="fa fa-home"></i> Menu
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Golongan
+                                <i class="fa fa-edit"></i> Kategori Lembur
                             </li>
                         </ol>
                     </div>
                 </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Data Golongan</div></h2>
+                <div class="panel-heading"><h2>Data Kategori Lembur</div></h2>
 
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <div class="form-group input-group">
-                            <form action="golongan/?nama_golongan=nama_golongan">
+                        <form action="jabatan/?kode_lembur=kode_lembur">
                                 <div class="form-group input-group">
-                                <input type="text" class="form-control" name="nama_golongan">
+                                <input type="text" class="form-control" name="kode_lembur">
                                 <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
                                 </div>
-                                <h6>**Search diambil bedasarkan nama golongan</h6>
+                                <h6>**Search diambil bedasarkan kode lembur</h6>
                             </form>
-                        </div>
                         <hr>
                         <div class="table-responsive">
-                        <a href="{{url('golongan/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
+                        <a href="{{url('kategori_lembur/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
 
                          <hr>   
                             <table class="table table-bordered table-hover">
@@ -43,7 +41,8 @@
                                 <thead>
                                     <tr>
                                         <th><center>No</center></th>
-                                        <th><center>Kode Golongan</center></th>
+                                        <th><center>Kode Lembur</center></th>
+                                        <th><center>Nama Jabatan</center></th>
                                         <th><center>Nama Golongan</center></th>
                                         <th><center>Besaran Uang</center></th>
                                         <th><center>Aksi</center></th>
@@ -52,20 +51,21 @@
                                 @php
                                 $no=1;
                                 @endphp
-                                @foreach($golongan as $data)
+                                @foreach($kategori_lembur as $data)
                                 <tbody>
                                     <tr>
                                         <td><center>{{$no++}}</center></td>
-                                        <td><center>{{$data->kode_golongan}}</center></td>
-                                        <td><center>{{$data->nama_golongan}}</center></td>
+                                        <td><center>{{$data->kode_lembur}}</center></td>
+                                        <td><center>{{$data->jabatan->nama_jabatan}}</center></td>
+                                        <td><center>{{$data->golongan->nama_golongan}}</center></td>
                                         <td><center>Rp.{{$data->besaran_uang}}</center></td>
                                         <td><center>
 
-                                        <a title="Mengubah Data" href="{{route('golongan.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
+                                        <a title="Mengubah Data" href="{{route('kategori_lembur.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
 
                                         <a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>
 
-                                        @include('hapus.delete',['url'=>route('golongan.destroy',$data->id),'model'=>$data])
+                                        @include('hapus.delete',['url'=>route('kategori_lembur.destroy',$data->id),'model'=>$data])
                                         </center>
                                         </td>
                                     </tr>
@@ -75,7 +75,7 @@
 
                                 @endforeach
                             </table>
-                          {{$golongan->links()}}
+                          {{$kategori_lembur->links()}}
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    Anda Tidak Berhak Mengakses Halaman Golongan
+                    Anda Tidak Berhak Mengakses Halaman Kategori Lembur
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 03:02 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Host: localhost:3306
+-- Generation Time: Feb 22, 2017 at 09:40 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,7 +40,8 @@ CREATE TABLE `golongans` (
 --
 
 INSERT INTO `golongans` (`id`, `kode_golongan`, `nama_golongan`, `besaran_uang`, `created_at`, `updated_at`) VALUES
-(1, 'AD112', 'Junior', 20000, NULL, NULL);
+(2, 'AD113', 'Senior', 2000000, '2017-02-20 19:52:05', '2017-02-20 19:52:05'),
+(4, 'AD112', 'Junior', 1000000, '2017-02-20 19:56:06', '2017-02-20 19:56:06');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,11 @@ CREATE TABLE `jabatans` (
 --
 
 INSERT INTO `jabatans` (`id`, `kode_jabatan`, `nama_jabatan`, `besaran_uang`, `created_at`, `updated_at`) VALUES
-(1, 'CD123', 'Manager', 1000000, NULL, NULL);
+(3, 'ACD1222', 'Manager Pemasaran', 3200000, '2017-02-20 19:59:29', '2017-02-21 20:43:48'),
+(5, 'ACD1224', 'Manager Pabrik', 3100000, '2017-02-20 20:00:25', '2017-02-20 20:00:25'),
+(6, 'ACD1225', 'ADM & Gudang', 3400000, '2017-02-20 20:00:49', '2017-02-20 20:00:49'),
+(7, 'ACD1226', 'Karyawan A', 2500000, '2017-02-20 20:01:40', '2017-02-20 20:01:40'),
+(8, 'ACD1227', 'Karyawan B', 2600000, '2017-02-20 20:01:56', '2017-02-20 20:01:56');
 
 -- --------------------------------------------------------
 
@@ -79,6 +84,22 @@ CREATE TABLE `kategori_lemburs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `kategori_lemburs`
+--
+
+INSERT INTO `kategori_lemburs` (`id`, `kode_lembur`, `jabatan_id`, `golongan_id`, `besaran_uang`, `created_at`, `updated_at`) VALUES
+(3, 'AD3', 3, 2, 22000, '2017-02-21 01:11:02', '2017-02-21 01:11:02'),
+(4, 'AD4', 3, 4, 23000, '2017-02-21 01:11:27', '2017-02-21 01:11:27'),
+(7, 'AD7', 5, 2, 25000, '2017-02-21 01:54:57', '2017-02-21 01:54:57'),
+(8, 'AD8', 5, 4, 24000, '2017-02-21 01:55:32', '2017-02-21 01:55:32'),
+(9, 'AD9', 6, 2, 25500, '2017-02-21 01:56:11', '2017-02-21 01:56:11'),
+(10, 'AD10', 6, 4, 24500, '2017-02-21 01:56:35', '2017-02-21 01:56:35'),
+(11, 'AD11', 7, 2, 20000, '2017-02-21 01:57:36', '2017-02-21 01:57:36'),
+(12, 'AD12', 7, 4, 19000, '2017-02-21 01:57:51', '2017-02-21 01:57:51'),
+(13, 'AD13', 8, 2, 21000, '2017-02-21 01:58:22', '2017-02-21 01:58:22'),
+(14, 'AD14', 8, 4, 20000, '2017-02-21 01:58:40', '2017-02-21 01:58:40');
 
 -- --------------------------------------------------------
 
@@ -151,6 +172,16 @@ CREATE TABLE `pegawais` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `pegawais`
+--
+
+INSERT INTO `pegawais` (`id`, `nip`, `jabatan_id`, `golongan_id`, `user_id`, `photo`, `created_at`, `updated_at`) VALUES
+(3, '1415101231', 5, 2, 5, 'P9Yb0b_Untitled.png', '2017-02-20 21:53:08', '2017-02-20 21:53:08'),
+(4, '1415101237', 7, 4, 6, 'G1JoN1_Untitled.png', '2017-02-20 23:36:18', '2017-02-20 23:36:18'),
+(5, '1415101238', 8, 2, 7, 'YgRopr_Untitled.png', '2017-02-20 23:42:24', '2017-02-20 23:42:24'),
+(8, '1415101230', 7, 2, 10, 'ZqhTGT_Untitled.png', '2017-02-20 23:44:17', '2017-02-20 23:44:17');
 
 -- --------------------------------------------------------
 
@@ -226,7 +257,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `permision`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Aldi', 'aldi@email.com', '$2y$10$m9m8KxmUsBPY0.TuEgPLYeaixRUTLtzL4vsbgNMwtdtQO7GtKv77S', 'admin', 'nTv2Pt0RXpcZ9SQTaFQVu6fD1KsStHvwLsTGPKNyuIibWkzhcMy9MxkgEXKv', '2017-02-19 02:22:53', '2017-02-19 06:48:51');
+(1, 'Aldi', 'aldi@email.com', '$2y$10$A6BMh2brcVioX7OfG9ykJeAKVIBCokk2ueEGiEQfbdTq5m14.UoAy', 'admin', 'tTElzoeGPZXZWCBNddqVNm8BLf0OtNssWVD9xWqmQtr6OS1WFWsnOqy6N15X', '2017-02-20 19:27:57', '2017-02-21 18:56:15'),
+(5, 'Roc', 'roc@email.com', '$2y$10$av0Ior9kroLo3aWBy4ZrFuwX3MSLwvHlYe.3l8kqnRahMM2P9Y/PK', 'pegawai', NULL, '2017-02-20 21:53:08', '2017-02-20 21:53:08'),
+(6, 'Andri ', 'andri@email.com', '$2y$10$neww1vAcTeaCuM1kNJ32jud0MQq6eOKlauM098GlgAyBsXxvHh3GK', 'pegawai', 'rS62YE2KRMaIVGD75GtWaRHqfww4pE8jgReRC32NR58N2bzth0NZsQweem2t', '2017-02-20 23:36:18', '2017-02-21 19:00:04'),
+(7, 'Ali', 'ali@email.com', '$2y$10$B4KmN3jDS/lzNQKlJoZH5.y90EvgLh427pLbOysYbsWoKW6FQqtOO', 'pegawai', NULL, '2017-02-20 23:42:24', '2017-02-20 23:42:24'),
+(9, 'Fajar', 'fa@email.com', '$2y$10$T.40LpPICukgzhvd4QEJb.iaKT9v0D1hNeuEkAJME5vFAuaoY6xVq', 'pegawai', NULL, '2017-02-20 23:43:50', '2017-02-20 23:43:50'),
+(10, 'Riko', 'ri@email.com', '$2y$10$pE/g5QcejmeyYfTFKyK6duDuIe5GvTWwO.8Qh5mAmR4H1X/nlbEAO', 'pegawai', NULL, '2017-02-20 23:44:17', '2017-02-20 23:44:17');
 
 --
 -- Indexes for dumped tables
@@ -325,22 +361,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `golongans`
 --
 ALTER TABLE `golongans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jabatans`
 --
 ALTER TABLE `jabatans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `kategori_lemburs`
 --
 ALTER TABLE `kategori_lemburs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `lembur_pegawais`
 --
 ALTER TABLE `lembur_pegawais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -370,7 +406,7 @@ ALTER TABLE `tunjangan_pegawais`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --

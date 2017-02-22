@@ -24,13 +24,16 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <!--<div class="form-group input-group">
-                            <form action="matadiklat/?nama_mata_diklat=nama_mata_diklat">
-                                <input type="text" name="nama_mata_diklat" placeholder="search">
-                                <input type="submit" class="btn btn-success" value="search">
-                                <a href="{{'/matadiklat'}}" class="btn btn-danger"><i> Reset</a></i>
+                        <div class="form-group input-group">
+                            <form action="jabatan/?nama_jabatan=nama_jabatan">
+                                <div class="form-group input-group">
+                                <input type="text" class="form-control" name="nama_jabatan">
+                                <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+                                </div>
+                                <h6>**Search diambil bedasarkan nama jabatan</h6>
                             </form>
-                        </div>-->
+                        </div>
+
                         <hr>
                         <div class="table-responsive">
                         <a href="{{url('jabatan/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
@@ -57,8 +60,7 @@
                                         <td><center>{{$data->kode_jabatan}}</center></td>
                                         <td><center>{{$data->nama_jabatan}}</center></td>
                                         <td><center>Rp.{{$data->besaran_uang}}</center></td>
-                                        <td><center><a title="Melihat detail data" href="{{url('jabatan',$data->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"> Detail</a></i>
-
+                                        <td><center>
                                         <a title="Mengubah Data" href="{{route('jabatan.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
 
                                         <a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>

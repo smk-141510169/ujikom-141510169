@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index');
 Route::resource('/pegawai','pegawaiController');
 Route::resource('/jabatan','jabatanController');
 Route::resource('/golongan','golonganController');
-Route::resource('/kategorilembur','kategori_lemburController');
+Route::resource('/kategori_lembur','kategori_lemburController');
 Route::resource('/tunjangan','tunjanganController');
 Route::resource('/lembur_pegawai','lembur_pegawaiController');
 Route::resource('/penggajian','penggajianController');
