@@ -27,22 +27,7 @@
                                 </div>
                     </div>
 
-                     <div class="form-group{{ $errors->has('kode_tunjangan_id') ? ' has-error' : '' }}">
-                            <label for="kode_tunjangan_id" class="col-md-4 control-label"> Kode Tunjangan</label>
-                                <div class="col-md-6">
-                                    <select type="text" name="kode_tunjangan_id" class="form-control">
-                                        <option value="">Pilih</option>
-                                        @foreach($tunjangan as $data)
-                                        <option value="{{$data->id}}" <?php if ($tunjangan_pegawai->kode_tunjangan_id==$data->id) {echo "selected";} ?>>{{$data->kode_tunjangan}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('kode_tunjangan_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('kode_tunjangan_id') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                    </div>
+                    
                     
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4" >

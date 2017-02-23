@@ -79,7 +79,8 @@
                                    </tbody>
                                 @endforeach
                             </table>
-                            <h4>**Untuk mengghapus data penggawai lewat tabel user</h4>
+                            <h6>**Untuk mengedit nama pegawai lewat tabel user</h6>
+                            <h6>**Untuk mengghapus data pegawai lewat tabel user</h6>
                              {{$pegawai->links()}}
                         </div>
                     </div>

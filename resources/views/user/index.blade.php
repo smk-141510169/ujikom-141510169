@@ -59,7 +59,8 @@
                                         <td><center>{{$data->password}}</center></td>
                                         <td><center>{{$data->permision}}</center></td>
                                         <td>
-                                        
+                                        <a title="Mengedit Data " href="{{route('user.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
+
                                         <a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>
 
                                         @include('hapus.delete',['url'=>route('user.destroy',$data->id),'model'=>$data])
@@ -72,6 +73,7 @@
 
                                 @endforeach
                             </table>
+                            <h6>**Hanya bisa mengedit username</h6>
                             <hr>
                           {{$user->links()}}
                         </div>
@@ -97,7 +99,7 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    Anda Tidak Berhak Mengakses Halaman Jabatan
+                    Anda Tidak Berhak Mengakses Halaman User
                 </div>
             </div>
         </div>

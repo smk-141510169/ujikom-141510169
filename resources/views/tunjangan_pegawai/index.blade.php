@@ -50,11 +50,13 @@
                                         <th><center>NIP Pegawai</center></th>
                                         <th><center>Nama Pegawai</center></th>
                                         <th><center>Besaran Uang</center></th>
+                                        <th><center>Tanggal Buat</center></th>
                                         <th><center>Aksi</center></th>
                                     </tr>
                                 </thead>
                                 @php
                                 $no=1;
+                                $totall=0;
                                 @endphp
                                 @foreach($tunjangan_pegawai as $data)
                                 <tbody>
@@ -63,10 +65,11 @@
                                         <td><center>{{$data->tunjangan->kode_tunjangan}}</center></td>
                                         <td><center>{{$data->pegawai->nip}}</center></td>
                                         <td><center>{{$user->where('id',$data->pegawai->user_id)->first()->name}}</center></td>
-                                        <td><center>Rp.{{$data->tunjangan->besaran_tunjangan}}</center></td>
+                                        <td><center>Rp.{{$totall=($data->tunjangan->jumlah_anak*$data->tunjangan->besaran_tunjangan)+$data->tunjangan->besaran_tunjangan}}</center></td>
+                                        <th><center>{{$data->created_at}}</center></th>
                                         <td><center>
 
-                                        <a title="Mengubah Data" href="{{route('tunjangan_pegawai.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>
+                                        <!--<a title="Mengubah Data" href="{{route('tunjangan_pegawai.edit',$data->id)}}" class="btn btn-success"><i class="fa fa-edit"> Edit</a></i>-->
 
                                         <a data-toggle="modal" href="#delete{{$data->id}}" class="btn btn-danger" title="Menghapus Data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</a></i>
 
@@ -80,6 +83,8 @@
 
                                 @endforeach
                             </table>
+                            <h6>**Data tidak bisa di edit karena mengambil data pegawai</h6>
+                            <h6>**Jika ingin mengedit data lewat tabel pegawai</h6>
                           {{$tunjangan_pegawai->links()}}
                         </div>
                     </div>

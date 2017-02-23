@@ -136,18 +136,13 @@ class tunjanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = ['kode_tunjangan'  => 'required|unique:tunjangans',
-            'jabatan_id' => 'required',
-            'golongan_id' => 'required',
+        $rules = [
             'status' => 'required',
             'jumlah_anak' => 'required|numeric',
             'besaran_uang' => 'required|numeric'];
-        $sms = ['kode_tunjangan.required' => 'Harus Diisi',
-                'kode_tunjangan.unique' => 'Data Sudah Ada',
+        $sms = [
                 'jumlah_anak.numeric' => 'Harus Angka',
                 'besaran_uang.numeric' => 'Harus Angka',
-                'jabatan_id.required' => 'Harus Diisi',
-                'golongan_id.required' => 'Harus Diisi',
                 'status.required' => 'Harus Diisi',
                 'jumlah_anak.required' => 'Harus Diisi',
                 'besaran_uang.required' => 'Harus Diisi'
@@ -168,12 +163,13 @@ class tunjanganController extends Controller
          $tunjangan->golongan_id=Request::get('golongan_id');
          $tunjangan->status=Request::get('status');
          $tunjangan->jumlah_anak=Request::get('jumlah_anak');
-         $tunjangan->besaran_uang=Request::get('besaran_uang');
+         $tunjangan->besaran_tunjangan=Request::get('besaran_tunjangan');
          
          $tunjangan->update(); 
 
-         return redirect('tunjangan');
+        
         }
+         return redirect('tunjangan');
     }
 
     /**

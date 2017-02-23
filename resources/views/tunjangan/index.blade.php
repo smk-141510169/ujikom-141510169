@@ -51,12 +51,16 @@
                                     <th><center>Status</center></th>
                                     <th><center>Jumlah Anak</center></th>
                                     <th><center>Besaran Uang</center></th>
+                                    <th><center>Besaran Anak</center></th>
+                                    <th><center>Total</center></th>
                                     <th><center>Aksi</center></th>
                                 </tr>
                             </thead>
                             <tbody>
                             @php
                             $no=1;
+                            $totall=0;
+                            $total=0;
                             @endphp
                             @foreach($tunjangan as $data)
                                 <tr>
@@ -67,6 +71,8 @@
                                     <td><center>{{$data->status}}</center></td>
                                     <td><center>{{$data->jumlah_anak}}</center></td>
                                     <td><center>Rp.{{$data->besaran_tunjangan}}</center></td>
+                                    <td><center>Rp.{{$total=$data->jumlah_anak*$data->besaran_tunjangan}}</center></td>
+                                    <td><center>Rp.{{$totall=$total+$data->besaran_tunjangan}}</center></td>
                                     <td><center>
                                     <a href="{{route('tunjangan.edit', $data->id)}}" class="btn btn-success"><i class="glyphicon glyphicon-edit"> Edit</i></a>
                                 
@@ -85,6 +91,9 @@
 
                                 @endforeach
                             </table>
+                            <h6>**Besaran uang diambil bedasarkan kode tunjangan</h6>
+                            <h6>**Besaran anak diambil bedasarkan jumlah anak dikali besaran uang</h6>
+                            <h6>**Total di ambil bedasarkan besaran uang ditambah besaran anak</h6>
                           {{$tunjangan->links()}}
                         </div>
                     </div>

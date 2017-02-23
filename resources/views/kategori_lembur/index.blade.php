@@ -80,6 +80,7 @@
 
                                 @endforeach
                             </table>
+                            <h6>**Besaran uang diambil bedasarkan kode kategori lembur</h6>
                           {{$kategori_lembur->links()}}
                         </div>
                     </div>

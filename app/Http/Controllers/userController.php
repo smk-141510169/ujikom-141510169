@@ -65,7 +65,8 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+         $user=User::find($id);
+        return view('user.edit',compact('user'));
     }
 
     /**
@@ -77,7 +78,11 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $userUpdate =Request::all();
+         $user=User::find($id);
+         $user->update($userUpdate);
+         
+        return redirect('user'); 
     }
 
     /**

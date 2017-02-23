@@ -127,7 +127,7 @@ class tunjangan_pegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $tunjangan_pegawaiUpdate=Request::all();
-        $tunjangan_pegawai=lembur_pegawai::find($id);
+        $tunjangan_pegawai=tunjangan_pegawai::find($id);
         $tunjangan_pegawai->update($tunjangan_pegawaiUpdate);
         return redirect('tunjangan_pegawai');
     }

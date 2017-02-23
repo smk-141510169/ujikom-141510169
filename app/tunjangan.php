@@ -8,8 +8,7 @@ class tunjangan extends Model
 {
     //
     protected $table ='tunjangans';
-    protected $fillable=['kode_tunjangan','jabatan_id','golongan_id','status','jumlah_anak','besaran_uang'];
- 
+    
 
    public function golongan(){
    	return $this->belongsTo('App\golongan','golongan_id');

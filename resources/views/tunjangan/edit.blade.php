@@ -69,7 +69,7 @@
 					<div class="form-group{{ $errors->has('besaran_tunjangan') ? ' has-error' : '' }}">
 							<label for="besaran_tunjangan" class="col-md-4 control-label">Besaran Uang </label>
 								<div class="col-md-6">
-									<input type="text" name="besaran_uang" value="{{$tunjangan->besaran_tunjangan}}" class="form-control">
+									<input type="number" name="besaran_uang" value="{{$tunjangan->besaran_tunjangan}}" class="form-control">
 									@if ($errors->has('besaran_tunjangan'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('besaran_tunjangan') }}</strong>
