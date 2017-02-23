@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Feb 22, 2017 at 09:40 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.12
+-- Host: 127.0.0.1
+-- Generation Time: Feb 23, 2017 at 11:25 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -63,7 +63,7 @@ CREATE TABLE `jabatans` (
 --
 
 INSERT INTO `jabatans` (`id`, `kode_jabatan`, `nama_jabatan`, `besaran_uang`, `created_at`, `updated_at`) VALUES
-(3, 'ACD1222', 'Manager Pemasaran', 3200000, '2017-02-20 19:59:29', '2017-02-21 20:43:48'),
+(3, 'ACD1220', 'Manager Pemasaran', 3200000, '2017-02-20 19:59:29', '2017-02-23 06:56:19'),
 (5, 'ACD1224', 'Manager Pabrik', 3100000, '2017-02-20 20:00:25', '2017-02-20 20:00:25'),
 (6, 'ACD1225', 'ADM & Gudang', 3400000, '2017-02-20 20:00:49', '2017-02-20 20:00:49'),
 (7, 'ACD1226', 'Karyawan A', 2500000, '2017-02-20 20:01:40', '2017-02-20 20:01:40'),
@@ -115,6 +115,16 @@ CREATE TABLE `lembur_pegawais` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `lembur_pegawais`
+--
+
+INSERT INTO `lembur_pegawais` (`id`, `kode_lembur_id`, `pegawai_id`, `jumlah_jam`, `created_at`, `updated_at`) VALUES
+(10, 3, 3, 5, '2017-02-22 07:01:57', '2017-02-22 07:01:57'),
+(12, 8, 8, 4, '2017-02-22 07:02:24', '2017-02-22 07:02:24'),
+(13, 13, 5, 3, '2017-02-22 07:02:42', '2017-02-22 07:02:42'),
+(14, 14, 4, 4, '2017-02-22 07:38:31', '2017-02-22 07:38:31');
 
 -- --------------------------------------------------------
 
@@ -221,6 +231,22 @@ CREATE TABLE `tunjangans` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `tunjangans`
+--
+
+INSERT INTO `tunjangans` (`id`, `kode_tunjangan`, `jabatan_id`, `golongan_id`, `status`, `jumlah_anak`, `besaran_tunjangan`, `created_at`, `updated_at`) VALUES
+(2, 'ACF12331', 3, 4, 'Belum Menikah', 0, 80000, '2017-02-23 07:09:30', '2017-02-23 07:09:30'),
+(3, 'ACF12333', 5, 2, 'Belum Menikah', 0, 100000, '2017-02-23 07:10:20', '2017-02-23 07:10:20'),
+(4, 'ACF12334', 5, 4, 'Belum Menikah', 0, 85000, '2017-02-23 07:10:37', '2017-02-23 07:10:37'),
+(5, 'ACF12335', 6, 2, 'Belum Menikah', 0, 110000, '2017-02-23 07:11:04', '2017-02-23 07:11:04'),
+(6, 'ACF12336', 6, 4, 'Belum Menikah', 0, 90000, '2017-02-23 07:11:30', '2017-02-23 07:11:30'),
+(7, 'ACF12337', 7, 2, 'Belum Menikah', 0, 100000, '2017-02-23 07:11:49', '2017-02-23 07:11:49'),
+(8, 'ACF12338', 7, 4, 'Belum Menikah', 0, 75000, '2017-02-23 07:12:04', '2017-02-23 07:12:04'),
+(9, 'ACF12339', 8, 2, 'Belum Menikah', 0, 100000, '2017-02-23 07:12:26', '2017-02-23 07:12:26'),
+(10, 'ACF12340', 8, 4, 'Belum Menikah', 0, 80000, '2017-02-23 07:12:49', '2017-02-23 07:12:49'),
+(12, 'ACF12332', 3, 2, 'Belum Menikah', 0, 100000, '2017-02-23 07:41:55', '2017-02-23 07:41:55');
+
 -- --------------------------------------------------------
 
 --
@@ -234,6 +260,16 @@ CREATE TABLE `tunjangan_pegawais` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tunjangan_pegawais`
+--
+
+INSERT INTO `tunjangan_pegawais` (`id`, `kode_tunjangan_id`, `pegawai_id`, `created_at`, `updated_at`) VALUES
+(2, 8, 4, '2017-02-23 08:00:02', '2017-02-23 08:00:02'),
+(3, 3, 3, '2017-02-23 08:03:40', '2017-02-23 08:03:40'),
+(4, 9, 5, '2017-02-23 08:03:44', '2017-02-23 08:03:44'),
+(6, 7, 8, '2017-02-23 08:07:28', '2017-02-23 08:07:28');
 
 -- --------------------------------------------------------
 
@@ -257,8 +293,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `permision`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Aldi', 'aldi@email.com', '$2y$10$A6BMh2brcVioX7OfG9ykJeAKVIBCokk2ueEGiEQfbdTq5m14.UoAy', 'admin', 'tTElzoeGPZXZWCBNddqVNm8BLf0OtNssWVD9xWqmQtr6OS1WFWsnOqy6N15X', '2017-02-20 19:27:57', '2017-02-21 18:56:15'),
-(5, 'Roc', 'roc@email.com', '$2y$10$av0Ior9kroLo3aWBy4ZrFuwX3MSLwvHlYe.3l8kqnRahMM2P9Y/PK', 'pegawai', NULL, '2017-02-20 21:53:08', '2017-02-20 21:53:08'),
+(1, 'Aldi', 'aldi@email.com', '$2y$10$A6BMh2brcVioX7OfG9ykJeAKVIBCokk2ueEGiEQfbdTq5m14.UoAy', 'admin', 'tTElzoeGPZXZWCBNddqVNm8BLf0OtNssWVD9xWqmQtr6OS1WFWsnOqy6N15X', '2017-02-20 19:27:57', '2017-02-23 08:27:33'),
+(5, 'Rochendi', 'roc@email.com', '$2y$10$av0Ior9kroLo3aWBy4ZrFuwX3MSLwvHlYe.3l8kqnRahMM2P9Y/PK', 'pegawai', NULL, '2017-02-20 21:53:08', '2017-02-23 08:20:23'),
 (6, 'Andri ', 'andri@email.com', '$2y$10$neww1vAcTeaCuM1kNJ32jud0MQq6eOKlauM098GlgAyBsXxvHh3GK', 'pegawai', 'rS62YE2KRMaIVGD75GtWaRHqfww4pE8jgReRC32NR58N2bzth0NZsQweem2t', '2017-02-20 23:36:18', '2017-02-21 19:00:04'),
 (7, 'Ali', 'ali@email.com', '$2y$10$B4KmN3jDS/lzNQKlJoZH5.y90EvgLh427pLbOysYbsWoKW6FQqtOO', 'pegawai', NULL, '2017-02-20 23:42:24', '2017-02-20 23:42:24'),
 (9, 'Fajar', 'fa@email.com', '$2y$10$T.40LpPICukgzhvd4QEJb.iaKT9v0D1hNeuEkAJME5vFAuaoY6xVq', 'pegawai', NULL, '2017-02-20 23:43:50', '2017-02-20 23:43:50'),
@@ -361,22 +397,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `golongans`
 --
 ALTER TABLE `golongans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jabatans`
 --
 ALTER TABLE `jabatans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `kategori_lemburs`
 --
 ALTER TABLE `kategori_lemburs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `lembur_pegawais`
 --
 ALTER TABLE `lembur_pegawais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -396,12 +432,12 @@ ALTER TABLE `penggajians`
 -- AUTO_INCREMENT for table `tunjangans`
 --
 ALTER TABLE `tunjangans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tunjangan_pegawais`
 --
 ALTER TABLE `tunjangan_pegawais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
