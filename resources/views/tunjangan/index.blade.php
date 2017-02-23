@@ -24,13 +24,17 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <form action="kategori_lembur/?kode_lembur=kode_lembur">
+                       <div class="table-responsive">
+                         <div class="form-group input-group">
+                            <form action="tunjangan/?kode_tunjangan=kode_tunjangan">
                                 <div class="form-group input-group">
-                                <input type="text" class="form-control" name="kode_lembur"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                <input type="text" class="form-control" name="kode_tunjangan">
+                                <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
                                 </div>
-                             
-                                <h6>**Search diambil bedasarkan kode lembur</h6>
+                                <h6>**Search diambil bedasarkan kode tunjangan</h6>
                             </form>
+                          </div>
+                        </div>
                         <hr>
                         <div class="table-responsive">
                         <a href="{{url('tunjangan/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>
@@ -39,36 +43,41 @@
                             <table class="table table-bordered table-hover">
 
                                 <thead>
-                                    <tr class="success">
-                                    <th>Kode Tunjangan</th>
-                                    <th>Nama Jabatan</th>
-                                    <th>Nama Golongan</th>
-                                    <th>Status</th>
-                                    <th>Jumlah Anak</th>
-                                    <th>Besaran Uang</th>
-                                    <th colspan="3"><center>Aksi</center></th>
+                                    <tr>
+                                    <th><center>No</center></th>
+                                    <th><center>Kode Tunjangan</center></th>
+                                    <th><center>Nama Jabatan</center></th>
+                                    <th><center>Nama Golongan</center></th>
+                                    <th><center>Status</center></th>
+                                    <th><center>Jumlah Anak</center></th>
+                                    <th><center>Besaran Uang</center></th>
+                                    <th><center>Aksi</center></th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @php
+                            $no=1;
+                            @endphp
                             @foreach($tunjangan as $data)
                                 <tr>
-                                    <td>{{$data->kode_tunjangan}}</td>
-                                    <td>{{$data->jabatan->nama_jabatan}}</td>
-                                    <td>{{$data->golongan->nama_golongan}}</td>
-                                    <td>{{$data->status}}</td>
-                                    <td>{{$data->jumlah_anak}}</td>
-                                    <td>{{$data->besaran_uang}}</td>
-                                    <td align="right">
-                                    <a href="{{route('tunjangan.edit', $data->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
-                                </td>
+                                    <td><center>{{$no++}}</center></td>
+                                    <td><center>{{$data->kode_tunjangan}}</center></td>
+                                    <td><center>{{$data->jabatan->nama_jabatan}}</center></td>
+                                    <td><center>{{$data->golongan->nama_golongan}}</center></td>
+                                    <td><center>{{$data->status}}</center></td>
+                                    <td><center>{{$data->jumlah_anak}}</center></td>
+                                    <td><center>Rp.{{$data->besaran_tunjangan}}</center></td>
+                                    <td><center>
+                                    <a href="{{route('tunjangan.edit', $data->id)}}" class="btn btn-success"><i class="glyphicon glyphicon-edit"> Edit</i></a>
+                                
 
-                                <td >
-                                  <a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"></i></a>
-                                  @include('modals.delete', [
+                                    <a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</i></a>
+                                    
+                                    @include('hapus.delete', [
                                     'url' => route('tunjangan.destroy', $data->id),
                                     'model' => $data
                                   ])
-                                </td>
+                                </center></td>
                                 </tr>
                           
                                 </tbody>
@@ -76,7 +85,7 @@
 
                                 @endforeach
                             </table>
-                          {{$kategori_lembur->links()}}
+                          {{$tunjangan->links()}}
                         </div>
                     </div>
                 </div>

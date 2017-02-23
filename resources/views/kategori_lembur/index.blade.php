@@ -24,13 +24,18 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <form action="kategori_lembur/?kode_lembur=kode_lembur">
+                        <div class="table-responsive">
+                         
+                        <div class="form-group input-group">
+                            <form action="kategori_lembur/?kode_lembur=kode_lembur">
                                 <div class="form-group input-group">
-                                <input type="text" class="form-control" name="kode_lembur"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                <input type="text" class="form-control" name="kode_lembur">
+                                <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
                                 </div>
-                             
                                 <h6>**Search diambil bedasarkan kode lembur</h6>
                             </form>
+                        </div>
+                        </div>
                         <hr>
                         <div class="table-responsive">
                         <a href="{{url('kategori_lembur/create')}}" class="btn btn-primary"><i>Tambah Data</a></i>

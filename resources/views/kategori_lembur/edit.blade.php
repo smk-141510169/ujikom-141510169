@@ -27,7 +27,7 @@
                                 <div class="col-md-6">
                                     <select name="jabatan_id" class="form-control">
                                 @foreach ($jabatan as $data)
-                                <option value="{{$data->id}}" <?php if ($kategori_lembur->data_id==$data->id) {echo "selected";} ?>{{$data->nama_jabatan}}</option>
+                                <option value="{{$data->id}}" <?php if ($kategori_lembur->jabatan_id==$data->id) {echo "selected";} ?>>{{$data->nama_jabatan}}</option>
                                 @endforeach
                             </select>
                                     @if ($errors->has('jabatan_id'))
@@ -40,7 +40,7 @@
                     <div class="form-group{{ $errors->has('golongan_id') ? ' has-error' : '' }}">
                             <label for="golongan_id" class="col-md-4 control-label">Nama Golongan :</label>
                                 <div class="col-md-6">
-                            <select name="jabatan_id" class="form-control">
+                            <select name="golongan_id" class="form-control">
                                 @foreach ($golongan as $golongan)
                                 <option value="{{$golongan->id}}" <?php if ($kategori_lembur->golongan_id==$golongan->id) {echo "selected";} ?>>{{$golongan->nama_golongan}}</option>
                                 @endforeach

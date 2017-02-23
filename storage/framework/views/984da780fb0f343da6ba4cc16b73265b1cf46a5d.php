@@ -25,8 +25,8 @@
                             <label for="jabatan_id" class="col-md-4 control-label">Nama Jabatan :</label>
                                 <div class="col-md-6">
                                     <select name="jabatan_id" class="form-control">
-                                <?php $__currentLoopData = $jabatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jabatan): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-                                <option value="<?php echo e($jabatan->id); ?>" <?php if ($kategori_lembur->jabatan_id==$jabatan->id) {echo "selected";} ?>><?php echo e($jabatan->nama_jabatan); ?></option>
+                                <?php $__currentLoopData = $jabatan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <option value="<?php echo e($data->id); ?>" <?php if ($kategori_lembur->jabatan_id==$data->id) {echo "selected";} ?>><?php echo e($data->nama_jabatan); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </select>
                                     <?php if($errors->has('jabatan_id')): ?>
@@ -39,7 +39,7 @@
                     <div class="form-group<?php echo e($errors->has('golongan_id') ? ' has-error' : ''); ?>">
                             <label for="golongan_id" class="col-md-4 control-label">Nama Golongan :</label>
                                 <div class="col-md-6">
-                            <select name="jabatan_id" class="form-control">
+                            <select name="golongan_id" class="form-control">
                                 <?php $__currentLoopData = $golongan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $golongan): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <option value="<?php echo e($golongan->id); ?>" <?php if ($kategori_lembur->golongan_id==$golongan->id) {echo "selected";} ?>><?php echo e($golongan->nama_golongan); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

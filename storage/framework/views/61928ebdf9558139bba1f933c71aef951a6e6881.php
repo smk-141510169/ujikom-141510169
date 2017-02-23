@@ -24,15 +24,18 @@
                 <div class="panel-body">
                      <div class="col-lg-12">
                         <h1></h1>
-                        <div class="table-responsive">
+                                <div class="table-responsive">
                        	 
-                        <!--<div class="form-group input-group">
-                            <form action="siswa/?nama_siswa=nama_siswa">
-                                <input type="text" name="nama_siswa" placeholder="search">
-                                <input type="submit" class="btn btn-success" value="search">
-                                <a href="<?php echo e('/siswa'); ?>" class="btn btn-danger"><i> Reset</a></i>
+                        <div class="form-group input-group">
+                            <form action="pegawai/?nip=nip">
+                                <div class="form-group input-group">
+                                <input type="text" class="form-control" name="nip">
+                                <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
+                                </div>
+                                <h6>**Search diambil bedasarkan nip pegawai</h6>
                             </form>
-                        </div>-->
+                        </div>
+                        </div>
                         <hr>
                         <a href="<?php echo e(url('pegawai/create')); ?>" class="btn btn-primary"><i>Tambah Data</a></i>
                          <hr>   

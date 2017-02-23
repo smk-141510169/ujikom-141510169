@@ -107,7 +107,10 @@
                                 <a href="{{ url('/lembur_pegawai') }}"><i class="fa fa-fw fa-edit"></i> Lembur Pegawai</a>
                             </li>
                             <li>
-                                <a href="{{ url('/tunjangan') }}"><i class="fa fa-fw fa-edit"></i> tunjangan</a>
+                                <a href="{{ url('/tunjangan') }}"><i class="fa fa-fw fa-edit"></i> Tunjangan</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/tunjangan_pegawai') }}"><i class="fa fa-fw fa-edit"></i> Tunjangan Pegawai</a>
                             </li>
                             <li>
                                 <a href="{{ url('/Penggajian') }}"><i class="fa fa-fw fa-edit"></i> Penggajian</a>

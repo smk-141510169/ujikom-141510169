@@ -59,11 +59,12 @@ class lembur_pegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = ['kode_lembur_id'=>'required',
-                  'pegawai_id' => 'required',
+        $kategori_lembur = kategori_lembur::all();
+        
+        $lembur_pegawai = Request::all();
+        $rules = ['pegawai_id' => 'required',
                   'jumlah_jam' => 'required|numeric|min:1'];
-        $sms = ['kode_lembur_id.required'=>'Harus Diisi',
-                'pegawai_id.required' => 'Harus Diisi',
+        $sms = ['pegawai_id.required' => 'Harus Diisi',
                 'jumlah_jam.required' => 'Harus Diisi',
                 'jumlah_jam.numeric' => 'Harus Angka',
                 'jumlah_jam.min' => 'Angka harus minimal 1'];
@@ -78,7 +79,7 @@ class lembur_pegawaiController extends Controller
         else
         {
        
-       /* $pegawai = pegawai::where('id',$lembur_pegawai['pegawai_id'])->first();
+        $pegawai = pegawai::where('id',$lembur_pegawai['pegawai_id'])->first();
         $check = kategori_lembur::where('jabatan_id',$pegawai->jabatan_id)->where('golongan_id',$pegawai->golongan_id)->first();
         if(!isset($check)){
             $pegawai = pegawai::with('User')->get();
@@ -87,17 +88,11 @@ class lembur_pegawaiController extends Controller
             return view('lembur_pegawai.create',compact('kategori_lembur','pegawai','missing_count'));
         }
         $lembur_pegawai['kode_lembur_id'] = $check->id;
-        */
-         $lembur_pegawai = new lembur_pegawai;
-         $lembur_pegawai->kode_lembur_id=Request::get('kode_lembur_id');
-         $lembur_pegawai->pegawai_id=Request::get('pegawai_id');
-         $lembur_pegawai->jumlah_jam=Request::get('jumlah_jam');
+        lembur_pegawai::create($lembur_pegawai);
          
-         $lembur_pegawai->save(); 
-
-         return redirect('lembur_pegawai');
+         
         }
-        
+        return redirect('lembur_pegawai');
          
     }
 
@@ -136,14 +131,32 @@ class lembur_pegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $lembur_pegawai =lembur_pegawai::find($id);
-         $lembur_pegawai->kode_lembur_id=Request::get('kode_lembur_id');
-         $lembur_pegawai->pegawai_id=Request::get('pegawai_id');
-         $lembur_pegawai->jumlah_jam=Request::get('jumlah_jam');
-         
-         $lembur_pegawai->update(); 
+         $kategori_lembur = kategori_lembur::all();
+        
+        $lembur_pegawai = Request::all();
+        $rules = ['jumlah_jam' => 'required|numeric|min:1'];
+        $sms = ['jumlah_jam.required' => 'Harus Diisi',
+                'jumlah_jam.numeric' => 'Harus Angka',
+                'jumlah_jam.min' => 'Angka harus minimal 1'];
+        $valid=Validator::make(Input::all(),$rules,$sms);
+        if ($valid->fails()) {
 
-         return redirect('lembur_pegawai');
+          
+            return redirect('lembur_pegawai/'.$id.'/edit')
+            ->withErrors($valid)
+            ->withInput();
+        }
+        else
+        {
+       
+         $lembur_pegawaiUpdate =Request::all();
+         $lembur_pegawai=lembur_pegawai::find($id);
+         $lembur_pegawai->update($lembur_pegawaiUpdate);
+         
+        return redirect('lembur_pegawai'); 
+         
+        }
+        
     }
 
     /**

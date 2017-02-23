@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\jabatan;
 use App\golongan;
-use App\user;
+use App\User;
 use App\Validator;
 use App\pegawai;
 use Input;
@@ -132,21 +132,7 @@ class pegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request,[
-                'name'=>'required',
-                'nip'=>'required|numeric|min:3|unique:pegawais',
-                'permision'=>'required|max:255',
-                'email'=>'required|email|max:255|unique:users',
-                'password'=>'required|min:6|confirmed',
-            ]);
-
-        $user = User::update([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'permision' => $request->get('permision'),
-            'password' => bcrypt($request->get('password')),
-        ]);
-
+         
         $file=Input::file('photo');
         $dis=public_path().'/image';
         $filen=str_random(6).'_'.$file->getClientOriginalName();
@@ -158,11 +144,10 @@ class pegawaiController extends Controller
             $pegawai->golongan_id=Input::get('golongan_id');
 
         }
-        $pegawai->photo=$filen;
+         $user=User::all();
+         $pegawai->photo=$filen;
         
-   
-        
-         $pegawai->user_id= $user->id;
+         $pegawai->user_id= $pegawai->User->id;
          $pegawai->update(); 
 
          return redirect('pegawai');

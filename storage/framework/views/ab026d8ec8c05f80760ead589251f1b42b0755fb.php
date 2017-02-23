@@ -108,7 +108,10 @@
                                 <a href="<?php echo e(url('/lembur_pegawai')); ?>"><i class="fa fa-fw fa-edit"></i> Lembur Pegawai</a>
                             </li>
                             <li>
-                                <a href="<?php echo e(url('/tunjangan')); ?>"><i class="fa fa-fw fa-edit"></i> tunjangan</a>
+                                <a href="<?php echo e(url('/tunjangan')); ?>"><i class="fa fa-fw fa-edit"></i> Tunjangan</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(url('/tunjangan_pegawai')); ?>"><i class="fa fa-fw fa-edit"></i> Tunjangan Pegawai</a>
                             </li>
                             <li>
                                 <a href="<?php echo e(url('/Penggajian')); ?>"><i class="fa fa-fw fa-edit"></i> Penggajian</a>

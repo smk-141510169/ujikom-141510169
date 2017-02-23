@@ -5,7 +5,10 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Register Lembur Pegawai</div>
                 <div class="panel-body">
-                     <form class="form-horizontal" action="<?php echo e(route('lembur_pegawai.store')); ?>" method="POST">    
+                     <form class="form-horizontal" action="<?php echo e(route('lembur_pegawai.update',$lembur_pegawai->id)); ?>" method="POST">    
+                     <input name="_method" type="hidden" value="PATCH">
+                    <?php echo e(csrf_field()); ?>
+
                      <div class="form-group<?php echo e($errors->has('kode_lembur_id') ? ' has-error' : ''); ?>">
                             <label for="kode_lembur_id" class="col-md-4 control-label">Kode Lembur</label>
                                 <div class="col-md-6">

@@ -125,27 +125,9 @@ class kategori_lemburController extends Controller
     public function update(Request $request, $id)
     {
           
-        $rules = ['kode_lembur' => 'required|unique:kategori_lemburs',
-                  'jabatan_id' => 'required',
-                  'golongan_id' => 'required',
-                  'besaran_uang' => 'required|numeric'];
-        $sms = ['kode_lembur.required' => 'Harus Diisi',
-                'kode_lembur.unique' => 'Data Sudah Ada',
-                'jabatan_id.required' => 'Harus Diisi',
-                'golongan_id.required' => 'Harus Diisi',
-                'besaran_uang.required' => 'Harus Diisi',
-                'besaran_uang.numeric' => 'Harus Angka'];
-        $valid=Validator::make(Input::all(),$rules,$sms);
-        if ($valid->fails()) {
-
-            return redirect('kategori_lembur/'.$id.'/edit')
-            ->withErrors($valid)
-            ->withInput();
-        }
-        else
-        {
         
-        $kategori_lembur =kategori_lembur::find($id);
+        
+         $kategori_lembur =kategori_lembur::find($id);
          $kategori_lembur->kode_lembur=Request::get('kode_lembur');
          $kategori_lembur->jabatan_id=Request::get('jabatan_id');
          $kategori_lembur->golongan_id=Request::get('golongan_id');
@@ -155,7 +137,7 @@ class kategori_lemburController extends Controller
 
          return redirect('kategori_lembur');
 
-    }
+    
 }
 
     /**

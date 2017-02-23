@@ -106,7 +106,7 @@
                         </div>
 
                         <div class="form-group<?php echo e($errors->has('jabatan_id') ? ' has-error' : ''); ?>">
-                            <label for="jabatan_id" class="col-md-4 control-label">ID Jabatan</label>
+                            <label for="jabatan_id" class="col-md-4 control-label">Kode Jabatan</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" name="jabatan_id">
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="form-group<?php echo e($errors->has('golongan_id') ? ' has-error' : ''); ?>">
-                            <label for="golongan_id" class="col-md-4 control-label">ID Golongan</label>
+                            <label for="golongan_id" class="col-md-4 control-label">Kode Golongan</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" name="golongan_id">
