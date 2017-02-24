@@ -113,7 +113,7 @@
                                 <a href="{{ url('/tunjangan_pegawai') }}"><i class="fa fa-fw fa-edit"></i> Tunjangan Pegawai</a>
                             </li>
                             <li>
-                                <a href="{{ url('/Penggajian') }}"><i class="fa fa-fw fa-edit"></i> Penggajian</a>
+                                <a href="{{ url('/penggajian') }}"><i class="fa fa-fw fa-edit"></i> Penggajian</a>
                             </li>
                             <li>
                                 <a href="{{ url('/user') }}"><i class="fa fa-fw fa-edit"></i> User</a>

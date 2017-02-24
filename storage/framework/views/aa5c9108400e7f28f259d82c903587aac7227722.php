@@ -79,6 +79,7 @@
 
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </table>
+                            <h6>**Besaran uang diambil bedasarkan kode kategori lembur</h6>
                           <?php echo e($kategori_lembur->links()); ?>
 
                         </div>

@@ -206,9 +206,9 @@ CREATE TABLE `penggajians` (
   `jumlah_uang_lembur` int(11) NOT NULL,
   `gaji_pokok` int(11) NOT NULL,
   `total_gaji` int(11) NOT NULL,
-  `tanggal_pengambilan` date NOT NULL,
-  `status_pengambilan` tinyint(1) NOT NULL,
-  `petugas_penerima` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tanggal_pengambilan` date DEFAULT NULL,
+  `status_pengambilan` tinyint(1) DEFAULT NULL,
+  `petugas_penerima` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

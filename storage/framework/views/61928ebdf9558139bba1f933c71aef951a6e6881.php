@@ -78,7 +78,8 @@
                                    </tbody>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
                             </table>
-                            <h4>**Untuk mengghapus data penggawai lewat tabel user</h4>
+                            <h6>**Untuk mengedit nama pegawai lewat tabel user</h6>
+                            <h6>**Untuk mengghapus data pegawai lewat tabel user</h6>
                              <?php echo e($pegawai->links()); ?>
 
                         </div>

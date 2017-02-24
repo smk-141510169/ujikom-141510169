@@ -114,7 +114,7 @@
                                 <a href="<?php echo e(url('/tunjangan_pegawai')); ?>"><i class="fa fa-fw fa-edit"></i> Tunjangan Pegawai</a>
                             </li>
                             <li>
-                                <a href="<?php echo e(url('/Penggajian')); ?>"><i class="fa fa-fw fa-edit"></i> Penggajian</a>
+                                <a href="<?php echo e(url('/penggajian')); ?>"><i class="fa fa-fw fa-edit"></i> Penggajian</a>
                             </li>
                             <li>
                                 <a href="<?php echo e(url('/user')); ?>"><i class="fa fa-fw fa-edit"></i> User</a>
