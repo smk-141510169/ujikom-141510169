@@ -34,15 +34,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							@if(isset($tunjangan_penggajian))
-							
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-                                	<td></td>
-								</tr>	
+							@if(isset($tunjangan_pegawai))
 							
 							@else
 							@php
@@ -51,12 +43,12 @@
 							@foreach($penggajian as $data)
 								<tr>
 									<td><center>{{$no++}}</center></td>
-									<td><center>{{$pegawai->nip}}</center></td>
-									<td><center>{{$users->name}}</center></td>
+									<td><center>{{$pegawai->tunjangan_pegawai->nip}}</center></td>
+									<td><center>{{$pegawai->tunjangan_pegawai->User->name}}</center></td>
 									<td><center>
-									<a href="{{url('penggajian',$data->id)}}" class="btn btn-default" title="Details"><i class="fa fa-eye"></i></a>
+									<a href="{{url('penggajian',$data->id)}}" class="btn btn-primary" title="Melihat detail gaji"><i class="fa fa-eye"> Detail</i></a>
                                
-                                  <a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"></i></a>
+                                  <a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Menghapus data" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"> Hapus</i></a>
                                   @include('hapus.delete', [
                                     'url' => route('penggajian.destroy', $data->id),
                                     'model' => $data
@@ -69,6 +61,9 @@
 							@endif
 							</tbody>
 						</table>
+						<h6>**Data penggajian dah masuk ke database tapi belum bisa ketampil di index</h6>
+						<h6>**Data penggajian bisa dilihat lewat show c/ http://localhost:8000/penggajian/id</h6>
+						<h6>id diambil sesuai id tabel penggajians</h6>
 					</div>
 				</div>
 			</div>

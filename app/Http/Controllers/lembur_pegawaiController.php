@@ -35,7 +35,7 @@ class lembur_pegawaiController extends Controller
         }
 
         
-        return view('lembur_pegawai.index',compact('lembur_pegawai','kategori_lembur','pegawai'));
+        return view('lembur_pegawai.index',compact('lembur_pegawai'));
     }
 
     /**

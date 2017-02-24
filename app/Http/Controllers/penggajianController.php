@@ -36,11 +36,9 @@ class PenggajianController extends Controller
         else
         {
         $tunjangan = tunjangan::where('id',$tunjangan_pegawai->kode_tunjangan_id)->first();
-        $pegawai = pegawai::with('User')->first();
-        $users = User::where('id',$pegawai['user_id'])->first();
-        $penggajian = penggajian::all();
+        $penggajian = penggajian::with('pegawai');
         }
-        return view('penggajian.index',compact('penggajian','users','pegawai','tunjangan_pegawai','tunjangan'));
+        return view('penggajian.index',compact('penggajian','tunjangan_pegawai','tunjangan'));
     }
 
     /**

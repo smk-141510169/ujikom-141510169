@@ -30,7 +30,7 @@
 								<span class="input-group-addon">Rp.</span>
 								<?php $pegawai->jabatan->tunjangan_uang = number_format($pegawai->jabatan->besaran_uang,0,',','.'); ?>
 								{!! Form::label('tunjangan_uang',$pegawai->jabatan->besaran_uang,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								
 							</div>
     						</td>
     					</tr>
@@ -41,7 +41,7 @@
 								<span class="input-group-addon">Rp.</span>
 								<?php $pegawai->golongan->tunjangan_uang = number_format($pegawai->golongan->besaran_uang,0,',','.'); ?>
 								{!! Form::label('tunjangan_uang',$pegawai->golongan->besaran_uang,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								
 							</div>
     						</td>
     					</tr>
@@ -52,7 +52,7 @@
 								<span class="input-group-addon">Rp.</span>
 								<?php $data->gaji_pokok = number_format($data->gaji_pokok,0,',','.'); ?>
 								{!! Form::label('besaran_uang',$data->gaji_pokok,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								
 							</div>
     						</td>
     					</tr>
@@ -63,7 +63,7 @@
 								<span class="input-group-addon">Rp.</span>
 								<?php $data->total_gaji = number_format($data->total_gaji,0,',','.'); ?>
 								{!! Form::label('besaran_uang',$data->total_gaji,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								
 							</div>
     						</td>
     					</tr>
@@ -72,9 +72,9 @@
     						<td>
     						<div class="input-group">
     						<span class="input-group-addon">Rp.</span>
-								<?php $tunjangan->besaran_uang = number_format($tunjangan->besaran_uang,0,',','.'); ?>
-								{!! Form::label('besaran_uang',$tunjangan->besaran_uang,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								<?php $tunjangan->besaran_uang = number_format($tunjangan->besaran_uang); ?>
+								{!! Form::label('besaran_uang',$tunjangan->besaran_tunjangan,['class'=>'form-control','id'=>'appendprepend']) !!}
+								
 							</div>
 							</td>
     					</tr>
@@ -134,7 +134,7 @@
     							<span class="input-group-addon">Rp.</span>
     							<?php $kategori_lembur->besaran_uang = number_format($kategori_lembur->besaran_uang); ?>
 								{!! Form::label('Bayaran Lembur',$kategori_lembur->besaran_uang,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								
 							</div>
     						</td>
     					</tr>
@@ -145,7 +145,7 @@
 								<span class="input-group-addon">Rp.</span>
 								<?php $data->jumlah_uang_lembur = number_format($data->jumlah_uang_lembur); ?>
 								{!! Form::label('besaran_uang',$data->jumlah_uang_lembur,['class'=>'form-control','id'=>'appendprepend']) !!}
-								<span class="input-group-addon">.00</span>
+								
 							</div>
     						</td>
     					</tr>
