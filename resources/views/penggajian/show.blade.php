@@ -13,18 +13,23 @@
     </div>
     <div class="row">
     	<div class="col-md-6">
-    		<div class="panel panel-default">
+    		<div class="panel panel-primary">
     			<div class="panel-heading">
-    				<div class="panel-title">Gaji</div>
+    				<div class="panel-title">Gaji Pegawai {{$pegawai->user->name}}</div>
     			</div>
     			<div class="panel-body">
-    				<table class="table table-hover">
-    					<tr>
-    						<td>Nama</td>
+    				<div class="panel-body" align="center">
+                    <img src="/image/{{$pegawai->photo}}" width="100" height="100">
+                    </div>
+                    <table class="table table-hover">
+    					<tr><td>NIP Pegawai</td>
+                            <td>{{$pegawai->nip}}</td></tr>
+                        <tr>
+    						<td>Nama Pegawai</td>
     						<td>{{$pegawai->user->name}}</td>
     					</tr>
     					<tr>
-    						<td>Jabatan {{$pegawai->jabatan->nama_jabatan}}</td>
+    						<td>Jabatan ({{$pegawai->jabatan->nama_jabatan}})</td>
     						<td>
     						<div class="input-group">
 								<span class="input-group-addon">Rp.</span>
@@ -35,7 +40,7 @@
     						</td>
     					</tr>
     					<tr>
-    						<td>Golongan {{$pegawai->golongan->nama_golongan}}</td>
+    						<td>Golongan ({{$pegawai->golongan->nama_golongan}})</td>
     						<td>
     						<div class="input-group">
 								<span class="input-group-addon">Rp.</span>
@@ -72,8 +77,8 @@
     						<td>
     						<div class="input-group">
     						<span class="input-group-addon">Rp.</span>
-								<?php $tunjangan->besaran_uang = number_format($tunjangan->besaran_uang); ?>
-								{!! Form::label('besaran_uang',$tunjangan->besaran_tunjangan,['class'=>'form-control','id'=>'appendprepend']) !!}
+								
+								{!! Form::label('besaran_uang',$tunjangan->jumlah_anak*$tunjangan->besaran_tunjangan,['class'=>'form-control','id'=>'appendprepend']) !!}
 								
 							</div>
 							</td>
@@ -107,12 +112,11 @@
     					</tr>
     					@endif
     				</table>
-                    <a href="/penggajian" class='btn btn-primary' title="Back">Kembali<p class="fa fa-reply-all "></p></a>
     			</div>
     		</div>
     	</div>
     	<div class="col-md-6">
-    		<div class="panel panel-default">
+    		<div class="panel panel-primary">
     			<div class="panel-heading">
     				<div class="panel-title">Lembur</div>
     			</div>
@@ -157,14 +161,13 @@
     	</div>
 
         <div class="col-md-6">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="panel-title">Photo Profil</div>
+                    <div class="panel-title">Keterangan</div>
                 </div>
                 <div class="panel-body">
-                    <div class="panel-body" align="center">
-                    <img src="/image/{{$pegawai->photo}}" width="100" height="100">
-                </div>
+                    <h5># Gaji pokok diambil dari besaran uang(jabatan)  ditambah besaran uang(golongan)</h5>
+                    <h5># Jumalah uang lembur diambil dari uang lembur dikali jam lembur</h5>    
                 </div>
             </div>
         </div>

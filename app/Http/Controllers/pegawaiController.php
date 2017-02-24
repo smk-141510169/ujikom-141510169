@@ -83,15 +83,12 @@ class pegawaiController extends Controller
         $upload=$file->move($dis,$filen);
         if(Input::hasfile('photo')){
             $pegawai=new pegawai;
-         $pegawai->nip=Input::get('nip');
+            $pegawai->nip=Input::get('nip');
             $pegawai->jabatan_id=Input::get('jabatan_id');
             $pegawai->golongan_id=Input::get('golongan_id');
 
         }
-        $pegawai->photo=$filen;
-        
-   
-        
+         $pegawai->photo=$filen;
          $pegawai->user_id= $user->id;
          $pegawai->save(); 
 

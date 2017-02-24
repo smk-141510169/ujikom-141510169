@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 23, 2017 at 11:25 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Host: localhost:3306
+-- Generation Time: Feb 24, 2017 at 11:14 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -188,7 +188,7 @@ CREATE TABLE `pegawais` (
 --
 
 INSERT INTO `pegawais` (`id`, `nip`, `jabatan_id`, `golongan_id`, `user_id`, `photo`, `created_at`, `updated_at`) VALUES
-(3, '1415101231', 5, 2, 5, 'P9Yb0b_Untitled.png', '2017-02-20 21:53:08', '2017-02-20 21:53:08'),
+(3, '1415101231', 5, 2, 5, 'MQWQlW_AEngIO_GamonTan.png', '2017-02-20 21:53:08', '2017-02-23 21:28:54'),
 (4, '1415101237', 7, 4, 6, 'G1JoN1_Untitled.png', '2017-02-20 23:36:18', '2017-02-20 23:36:18'),
 (5, '1415101238', 8, 2, 7, 'YgRopr_Untitled.png', '2017-02-20 23:42:24', '2017-02-20 23:42:24'),
 (8, '1415101230', 7, 2, 10, 'ZqhTGT_Untitled.png', '2017-02-20 23:44:17', '2017-02-20 23:44:17');
@@ -212,6 +212,16 @@ CREATE TABLE `penggajians` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `penggajians`
+--
+
+INSERT INTO `penggajians` (`id`, `tunjangan_pegawai_id`, `jumlah_jam_lembur`, `jumlah_uang_lembur`, `gaji_pokok`, `total_gaji`, `tanggal_pengambilan`, `status_pengambilan`, `petugas_penerima`, `created_at`, `updated_at`) VALUES
+(4, 4, 3, 63000, 4600000, 4663000, '2017-02-24', 1, 'Aldi', '2017-02-23 20:05:53', '2017-02-24 00:42:05'),
+(5, 2, 4, 76000, 3500000, 3576000, '2017-02-24', 1, 'Aldi', '2017-02-23 21:37:00', '2017-02-24 02:19:53'),
+(6, 3, 5, 125000, 5100000, 5225000, '2017-02-24', 1, 'Aldi', '2017-02-23 21:38:15', '2017-02-23 21:45:08'),
+(7, 6, 4, 80000, 4500000, 4580000, NULL, 0, NULL, '2017-02-23 23:49:51', '2017-02-23 23:49:51');
 
 -- --------------------------------------------------------
 
@@ -427,7 +437,7 @@ ALTER TABLE `pegawais`
 -- AUTO_INCREMENT for table `penggajians`
 --
 ALTER TABLE `penggajians`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tunjangans`
 --

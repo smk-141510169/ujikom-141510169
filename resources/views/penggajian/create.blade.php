@@ -12,7 +12,7 @@
                                     <select type="text" name="pegawai_id" class="form-control">
                                         <option value="">Pilih</option>
                                         @foreach($pegawai as $data)
-                                        <option value="{!! $data->id !!}">{!! $data->nip !!}_{!! $data->User->name !!}</option>
+                                        <option value="{!! $data->id !!}">{!! $data->nip !!} - {!! $data->User->name !!}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('pegawai_id'))

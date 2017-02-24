@@ -34,17 +34,15 @@
 								</tr>
 							</thead>
 							<tbody>
-							@if(isset($tunjangan_pegawai))
 							
-							@else
 							@php
 							$no=1;
 							@endphp
 							@foreach($penggajian as $data)
 								<tr>
 									<td><center>{{$no++}}</center></td>
-									<td><center>{{$pegawai->tunjangan_pegawai->nip}}</center></td>
-									<td><center>{{$pegawai->tunjangan_pegawai->User->name}}</center></td>
+									<td><center>{{$data->tunjangan_pegawai->pegawai->nip}}</center></td>
+									<td><center>{{$data->tunjangan_pegawai->pegawai->User->name}}</center></td>
 									<td><center>
 									<a href="{{url('penggajian',$data->id)}}" class="btn btn-primary" title="Melihat detail gaji"><i class="fa fa-eye"> Detail</i></a>
                                
@@ -58,12 +56,9 @@
 								</tr>
 							@endforeach
 							
-							@endif
 							</tbody>
 						</table>
-						<h6>**Data penggajian dah masuk ke database tapi belum bisa ketampil di index</h6>
-						<h6>**Data penggajian bisa dilihat lewat show c/ http://localhost:8000/penggajian/id</h6>
-						<h6>id diambil sesuai id tabel penggajians</h6>
+						<h6>**Klik button detail untuk melihat detail gaji pegawai</h6>
 					</div>
 				</div>
 			</div>

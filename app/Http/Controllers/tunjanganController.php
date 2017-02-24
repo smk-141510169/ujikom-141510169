@@ -136,27 +136,7 @@ class tunjanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
-            'status' => 'required',
-            'jumlah_anak' => 'required|numeric',
-            'besaran_uang' => 'required|numeric'];
-        $sms = [
-                'jumlah_anak.numeric' => 'Harus Angka',
-                'besaran_uang.numeric' => 'Harus Angka',
-                'status.required' => 'Harus Diisi',
-                'jumlah_anak.required' => 'Harus Diisi',
-                'besaran_uang.required' => 'Harus Diisi'
-                ];
-        $valid=Validator::make(Input::all(),$rules,$sms);
-        if ($valid->fails()) {
-
-            
-            return redirect('tunjangan/'.$id.'/edit')
-            ->withErrors($valid)
-            ->withInput();
-        }
-        else
-        {
+        
         $tunjangan = new tunjangan;
          $tunjangan->kode_tunjangan=Request::get('kode_lembur');
          $tunjangan->jabatan_id=Request::get('jabatan_id');
@@ -168,7 +148,7 @@ class tunjanganController extends Controller
          $tunjangan->update(); 
 
         
-        }
+        
          return redirect('tunjangan');
     }
 
